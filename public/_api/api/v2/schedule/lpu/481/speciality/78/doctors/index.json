@@ -1,0 +1,107 @@
+{
+  "result": [
+      {
+          "ariaNumber": "1",
+          "ariaType": null,
+          "comment": "Командировки служебные",
+          "freeParticipantCount": 0,
+          "freeTicketCount": 0,
+          "id": "734",
+          "lastDate": "2023-04-14T00:00:00",
+          "name": "Соловьева Татьяна Семеновна",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "ariaNumber": "8",
+          "ariaType": null,
+          "comment": "",
+          "freeParticipantCount": 1,
+          "freeTicketCount": 1,
+          "id": "738",
+          "lastDate": "2023-04-17T00:00:00",
+          "name": "Моружко Андрей Владимирович",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "ariaNumber": "3",
+          "ariaType": null,
+          "comment": "",
+          "freeParticipantCount": 0,
+          "freeTicketCount": 0,
+          "id": "745",
+          "lastDate": "2023-04-17T00:00:00",
+          "name": "Бурлака Валентина Николаевна",
+          "nearestDate": "2023-04-17T00:00:00"
+      },
+      {
+          "ariaNumber": "4",
+          "ariaType": null,
+          "comment": "",
+          "freeParticipantCount": 0,
+          "freeTicketCount": 0,
+          "id": "1163",
+          "lastDate": "2023-04-17T00:00:00",
+          "name": "Вибе Екатерина Вадимовна",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "ariaNumber": "5",
+          "ariaType": null,
+          "comment": "Командировки служебные",
+          "freeParticipantCount": 0,
+          "freeTicketCount": 0,
+          "id": "1292",
+          "lastDate": "2023-04-17T00:00:00",
+          "name": "Бабаева Валида Искендеровна",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "ariaNumber": "1",
+          "ariaType": null,
+          "comment": "",
+          "freeParticipantCount": 0,
+          "freeTicketCount": 0,
+          "id": "1447",
+          "lastDate": "2023-04-17T00:00:00",
+          "name": "Продайко Степан Сергеевич",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "ariaNumber": "II терапевтическое отделение",
+          "ariaType": null,
+          "comment": "",
+          "freeParticipantCount": 0,
+          "freeTicketCount": 0,
+          "id": "1497",
+          "lastDate": "2023-04-17T00:00:00",
+          "name": "Суров Анатолий Игоревич",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "ariaNumber": "3",
+          "ariaType": null,
+          "comment": "Нетрудоспособность (Болезнь, карантин и т.п.)",
+          "freeParticipantCount": 0,
+          "freeTicketCount": 0,
+          "id": "1502",
+          "lastDate": "2023-04-17T00:00:00",
+          "name": "Пивсаева Полина Васильевна",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "ariaNumber": "1",
+          "ariaType": null,
+          "comment": "",
+          "freeParticipantCount": 0,
+          "freeTicketCount": 0,
+          "id": "1507",
+          "lastDate": "2023-04-17T00:00:00",
+          "name": "Воякина Ирина Александровна",
+          "nearestDate": "2023-04-17T00:00:00"
+      }
+  ],
+  "success": true,
+  "errorCode": 0,
+  "message": null,
+  "stackTrace": null
+}

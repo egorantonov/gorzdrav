@@ -1,0 +1,16 @@
+{
+  "result": [
+      {
+          "id": "738_2023-04-11_09:30:00",
+          "visitStart": "2023-04-11T09:30:00",
+          "visitEnd": "2023-04-11T09:45:00",
+          "address": "",
+          "number": 6,
+          "room": "213"
+      }
+  ],
+  "success": true,
+  "errorCode": 0,
+  "message": null,
+  "stackTrace": null
+}

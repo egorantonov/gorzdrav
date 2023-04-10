@@ -1,0 +1,53 @@
+{
+  "result": [
+      {
+          "id": "7241",
+          "ferId": "173",
+          "name": "Ортодонтия",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 0,
+          "lastDate": null,
+          "nearestDate": null
+      },
+      {
+          "id": "7256",
+          "ferId": "171",
+          "name": "Стоматология общей практики",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 0,
+          "lastDate": null,
+          "nearestDate": null
+      },
+      {
+          "id": "7244",
+          "ferId": "175",
+          "name": "Стоматология ортопедическая",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 0,
+          "lastDate": null,
+          "nearestDate": null
+      },
+      {
+          "id": "7243",
+          "ferId": "176",
+          "name": "Стоматология терапевтическая",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 0,
+          "lastDate": null,
+          "nearestDate": null
+      },
+      {
+          "id": "7245",
+          "ferId": "177",
+          "name": "Стоматология хирургическая",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 0,
+          "lastDate": null,
+          "nearestDate": null
+      }
+  ],
+  "success": true,
+  "errorCode": 0,
+  "message": null,
+  "stackTrace": null
+}

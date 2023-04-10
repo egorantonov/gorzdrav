@@ -1,0 +1,43 @@
+{
+  "result": [
+      {
+          "appointmentId": "14643472",
+          "dateCreatedAppointment": "2023-04-10T20:36:22",
+          "doctorBringReferal": null,
+          "doctorRendingConsultation": {
+              "ariaNumber": null,
+              "ariaType": null,
+              "comment": null,
+              "freeParticipantCount": 0,
+              "freeTicketCount": 0,
+              "id": "738",
+              "lastDate": null,
+              "name": "Моружко Андрей Владимирович",
+              "nearestDate": null
+          },
+          "isAppointmentByReferral": false,
+          "lpuAddress": "196626, Санкт-Петербург, Пушкинский район, пос. Шушары, Валдайская улица, дом 4, к.1, стр.1",
+          "lpuFullName": "СПб ГБУЗ \"Городская поликлиника №60\" Поликлиничекое отделение \"Шушары\"",
+          "lpuId": "481",
+          "lpuPhone": "(812) 246-99-16",
+          "lpuShortName": "ГП 60 ПО Шуш",
+          "patientId": "1710996",
+          "referralId": null,
+          "specialityBringReferal": null,
+          "specialityRendingConsultation": {
+              "id": "78",
+              "ferId": "27",
+              "name": "Терапевт",
+              "countFreeParticipant": 0,
+              "countFreeTicket": 0,
+              "lastDate": null,
+              "nearestDate": null
+          },
+          "visitStart": "2023-04-11T09:30:00"
+      }
+  ],
+  "success": true,
+  "errorCode": 0,
+  "message": null,
+  "stackTrace": null
+}

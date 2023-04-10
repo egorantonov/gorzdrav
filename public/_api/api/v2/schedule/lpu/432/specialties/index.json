@@ -1,0 +1,53 @@
+{
+  "result": [
+    {
+      "id": "17128",
+      "ferId": null,
+      "name": "Кардиология",
+      "countFreeParticipant": 0,
+      "countFreeTicket": 0,
+      "lastDate": null,
+      "nearestDate": null
+    },
+    {
+      "id": "17126",
+      "ferId": null,
+      "name": "Терапия",
+      "countFreeParticipant": 42,
+      "countFreeTicket": 42,
+      "lastDate": "2023-04-19T13:40:00",
+      "nearestDate": "2023-04-13T11:00:00"
+    },
+    {
+      "id": "198",
+      "ferId": null,
+      "name": "Ультразвуковая диагностика",
+      "countFreeParticipant": 0,
+      "countFreeTicket": 0,
+      "lastDate": null,
+      "nearestDate": null
+    },
+    {
+      "id": "18074",
+      "ferId": null,
+      "name": "Функциональная диагностика",
+      "countFreeParticipant": 0,
+      "countFreeTicket": 0,
+      "lastDate": null,
+      "nearestDate": null
+    },
+    {
+      "id": "18598",
+      "ferId": null,
+      "name": "Эндокринология",
+      "countFreeParticipant": 0,
+      "countFreeTicket": 0,
+      "lastDate": null,
+      "nearestDate": null
+    }
+  ],
+  "success": true,
+  "errorCode": 0,
+  "message": null,
+  "stackTrace": null
+}

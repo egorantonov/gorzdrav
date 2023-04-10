@@ -1,0 +1,116 @@
+{
+  "result": [
+      {
+          "id": "6",
+          "ferId": "55",
+          "name": "Вакцинация от COVID-19",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 14,
+          "lastDate": "2023-04-28T00:00:00",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "id": "23",
+          "ferId": "32",
+          "name": "Инфекционист",
+          "countFreeParticipant": 79,
+          "countFreeTicket": 0,
+          "lastDate": "2023-04-17T00:00:00",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "id": "45",
+          "ferId": "224",
+          "name": "ВОП",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 2,
+          "lastDate": "2023-04-17T00:00:00",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "id": "49",
+          "ferId": "20",
+          "name": "Офтальмолог",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 1,
+          "lastDate": "2023-04-17T00:00:00",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "id": "73",
+          "ferId": "176",
+          "name": "Стоматология терапевтическая",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 0,
+          "lastDate": "2023-04-17T00:00:00",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "id": "74",
+          "ferId": "177",
+          "name": "Стоматология хирургическая",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 0,
+          "lastDate": "2023-04-17T00:00:00",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "id": "78",
+          "ferId": "27",
+          "name": "Терапевт",
+          "countFreeParticipant": 1,
+          "countFreeTicket": 10,
+          "lastDate": "2023-04-17T00:00:00",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "id": "84",
+          "ferId": "145",
+          "name": "Уролог",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 0,
+          "lastDate": "2023-04-17T00:00:00",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "id": "89",
+          "ferId": "30",
+          "name": "Хирург",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 0,
+          "lastDate": "2023-04-24T00:00:00",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "id": "103",
+          "ferId": "19",
+          "name": "Оториноларингология",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 0,
+          "lastDate": "2023-04-17T00:00:00",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "id": "160",
+          "ferId": "90",
+          "name": "Пульмонология",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 5,
+          "lastDate": "2023-04-17T00:00:00",
+          "nearestDate": "2023-04-11T00:00:00"
+      },
+      {
+          "id": "9999",
+          "ferId": "58",
+          "name": "Кабинет Профилактики (Углубленная Диспансеризация)",
+          "countFreeParticipant": 0,
+          "countFreeTicket": 0,
+          "lastDate": "2023-04-24T00:00:00",
+          "nearestDate": "2023-04-11T00:00:00"
+      }
+  ],
+  "success": true,
+  "errorCode": 0,
+  "message": null,
+  "stackTrace": null
+}
