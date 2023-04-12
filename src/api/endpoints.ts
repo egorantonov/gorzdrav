@@ -7,6 +7,7 @@ interface GorzdravApi {
   hostName: string,
   districts: string,
   lpus: string,
+  omsLpus: string,
   specialties: string,
   doctors: string,
   timetable: string,
@@ -20,6 +21,7 @@ export const GORZDRAV_API: GorzdravApi = {
   hostName: GORZDRAV,
   districts: `${API}/shared/districts`,
   lpus: `${API}/shared/district/{districtId}/lpus`,
+  omsLpus: `${API}/oms/attachment/lpus?polisN=`,
   specialties: `${API}/schedule/lpu/{lpuId}/specialties`,
   doctors: `${API}/schedule/lpu/{lpuId}/speciality/{specialtyId}/doctors`,
   timetable: `${API}/schedule/lpu/{lpuId}/doctor/{doctorId}/timetable`,
@@ -30,3 +32,4 @@ export const GORZDRAV_API: GorzdravApi = {
 }
 
 export const getLPUsEndpoint = (districtId: string) => GORZDRAV_API.lpus.replace('{districtId}', districtId)
+export const getOmsLPUsEndpoint = (polisN: string) => GORZDRAV_API.omsLpus+polisN

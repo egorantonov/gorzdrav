@@ -37,3 +37,8 @@ export interface LPU {
   longitude: string,
   latitude: string,
 }
+
+export interface ApiCache<T> {
+  value: T,
+  timestamp: number
+}
