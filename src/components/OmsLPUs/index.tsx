@@ -5,31 +5,28 @@ import { LPU, LPUsResponse } from '../../api/models'
 import style from './lpu.module.scss'
 import { Patient } from '../PatientForm'
 import { getOmsLPUsEndpoint } from '../../api/endpoints'
+import { Handles } from '../../pages/page1'
 
 interface OmsLPUsProps {
   polisN: string;
 }
 
-export function OmsLPUs() {
+export function OmsLPUs(handles: Handles) {
 
   const [lpu, setLpu] = useState({} as LPU)
   const [LPUs, setLPUs] = useState([] as LPU[])
 
   const selectedPatient = 'selectedPatient'
   const polisN = localStorage.getItem(selectedPatient) ?? ''
-  const patient: Patient = JSON.parse(localStorage.getItem(polisN) ?? '{}')
+  const patients: Patient[] = JSON.parse(localStorage.getItem('patients') ?? '[]')
 
-  const onLPUClick = useCallback((id: number) => {
-    const selectedLPU = LPUs.find(x => x.id === id)
+  const patient = patients.find(p => p.polisN === polisN)
 
-    if (selectedLPU !== undefined) {
-      setLpu(selectedLPU)
-    }
-    else {
-      console.error('Выбранное ЛПУ не найдено среди медорганизаций!')
-    }
+  const onLPUClick = (selectedLPU: LPU) => {
+    setLpu(selectedLPU)
 
-  }, [])
+    handles.next()
+  }
 
   useEffect(() => {
     const getLPUs = async () => {
@@ -43,30 +40,30 @@ export function OmsLPUs() {
   return (
     <div id="lpus" >
       <div className={style.lpus}>
-        <p>Выбранный пациент: {patient.lastName} {patient.firstName}</p>
+        <p>Выбранный пациент: {patient?.lastName} {patient?.firstName}</p>
         <span>Список доступных медорганизаций ({LPUs.length}):</span>
-        {LPUs.length > 0 && LPUs.map((x) => {
+        {LPUs.length > 0 && LPUs.map((lpu) => {
 
-          const phoneLink = `tel: +7${x.phone.replaceAll(/\(|\)|-| /g, '')}`
-          const emailLink = `mailto: ${x.email}`
+          const phoneLink = `tel: +7${lpu.phone.replaceAll(/\(|\)|-| /g, '')}`
+          const emailLink = `mailto: ${lpu.email}`
           // const encodedName = encodeURIComponent(`${x.lpuFullName} ${x.districtName} район`.replaceAll('"', ''))
-          const encodedAddress = encodeURIComponent(`${x.address} ${x.districtName} район`?.replaceAll('"', ''))
+          const encodedAddress = encodeURIComponent(`${lpu.address} ${lpu.districtName} район`?.replaceAll('"', ''))
 
           return (
-            <div key={x.id} className={style.lpu} onClick={() => onLPUClick(x.id)}>
+            <div key={lpu.id} className={style.lpu} onClick={() => onLPUClick(lpu)}>
               <div>
-                <span><b>{x.lpuFullName}</b></span>
+                <span><b>{lpu.lpuFullName}</b></span>
               </div>
-              {x.address && (<div>
+              {lpu.address && (<div>
                 
                 <a href={`https://yandex.ru/maps/2/saint-petersburg/search/${encodedAddress}/?z=19`}
                   target="_blank" rel="noreferrer">
-                  <span>📍 {x.address}</span>
+                  <span>📍 {lpu.address}</span>
                 </a>
               </div>)}
               <div>
-                <a href={phoneLink}> 📞 +7 {x.phone}</a>
-                <a href={emailLink}> 📧 {x.email}</a>
+                <a href={phoneLink}> 📞 +7 {lpu.phone}</a>
+                <a href={emailLink}> 📧 {lpu.email}</a>
               </div>
             </div>
           )

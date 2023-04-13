@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
 import './style.scss'
-import { PatientForm } from '../../components/PatientForm'
+import { Patients } from '../../components/PatientForm'
 import { OmsLPUs } from '../../components/OmsLPUs'
  
-const firstComponent = () => {
+
+export interface Handles {
+  next: any
+}
+
+const firstComponent = (handles: Handles) => {
   return <div>
-    <PatientForm />
+    <Patients next={handles.next}  />
   </div>
 }
-const secondComponent = () => {
+const secondComponent = (handles: Handles)  => {
   return <div>
-    <OmsLPUs />
+    <OmsLPUs next={handles.next} />
   </div>
 }
 const thirdComponent = () => {
@@ -23,10 +28,11 @@ const finalComponent = () => {
 export function Page1() {
 
   const [steps, setSteps] = useState([
-    { key: 'firstStep', label: 'My First Step', isDone: true, component: firstComponent },
-    { key: 'secondStep', label: 'My Second Step', isDone: false, component: secondComponent },
-    { key: 'thirdStep', label: 'My Third Step', isDone: false, component: thirdComponent },
-    { key: 'finalStep', label: 'My Final Step', isDone: false, component: finalComponent },
+    { key: 'firstStep', label: 'Пациент', isDone: true, component: firstComponent },
+    { key: 'secondStep', label: 'Медорганизация', isDone: false, component: secondComponent },
+    { key: 'thirdStep', label: 'Специальность', isDone: false, component: thirdComponent },
+    { key: 'fourthStep', label: 'Врач', isDone: false, component: thirdComponent },
+    { key: 'finalStep', label: 'Талон', isDone: false, component: finalComponent },
   ])
 
   const [activeStep, setActiveStep] = useState(steps[0])
@@ -45,7 +51,7 @@ export function Page1() {
     setActiveStep(steps[index + 1])
   }
 
-  const handleBack = () => {
+  function handleBack() {
     const index = steps.findIndex(x => x.key === activeStep.key)
     if (index === 0) return
  
@@ -56,26 +62,26 @@ export function Page1() {
     setActiveStep(steps[index - 1])
   }
 
-
   return (
     <div >
-      <h4>Step wizard in React - <a href="https://www.cluemediator.com" title="Clue Mediator" target="_blank" rel="nofollow noopener noreferrer">Clue Mediator</a></h4>
       <div className="box">
         <div className="steps">
           <ul className="nav">
             {steps.map((step, i) => {
               return <li key={i} className={`${activeStep.key === step.key ? 'active' : ''} ${step.isDone ? 'done' : ''}`}>
-                <div>Step {i + 1}<br /><span>{step.label}</span></div>
+                <div>Шаг {i + 1}<br /><span>{step.label}</span></div>
               </li>
             })}
           </ul>
         </div>
         <div className="btn-component">
-          <input type="button" value="Back" onClick={handleBack} disabled={steps[0].key === activeStep.key} />
-          <input type="button" value={steps.at(-1)?.key !== activeStep.key ? 'Next' : 'Submit'} onClick={handleNext} />
+          {steps[0].key !== activeStep.key && <input type="button" value="Назад" onClick={handleBack} disabled={steps[0].key === activeStep.key} />}
+          {/* <input type="button" value={steps.at(-1)?.key !== activeStep.key ? 'Next' : 'Submit'} onClick={handleNext} /> */}
         </div>
         <div className="step-component">
-          {activeStep.component()}
+          {
+            activeStep.component({next: handleNext})
+          }
         </div>
       </div>
     </div>
