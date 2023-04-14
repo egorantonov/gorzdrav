@@ -48,6 +48,18 @@ export interface Specialty {
   nearestDate?: string // Date 
 }
 
+export interface Doctor {
+  ariaNumber?: string,
+  ariaType?: string,
+  comment?: string,
+  freeParticipantCount: number,
+  freeTicketCount: number,
+  id: string,
+  lastDate?: string, // Date
+  name: string,
+  nearestDate?: string 
+}
+
 export interface ApiCache<T> {
   value: T,
   timestamp: number

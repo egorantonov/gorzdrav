@@ -3,14 +3,8 @@ import './style.scss'
 import { Patients } from '../../components/PatientForm'
 import { OmsLPUs } from '../../components/OmsLPUs'
 import { Specialties } from '../../components/Specialties'
+import { Doctors } from '../../components/Doctors'
  
-
-export interface Handles {
-  next: any,
-  polisN: string,
-  lpuId: string,
-}
-
 const firstComponent = () => {
   return <div>
 
@@ -32,12 +26,13 @@ export function Page1() {
   const [polisN, setPolisN] = useState('')
   const [lpuId, setLpuId] = useState('')
   const [specialtyId, setSpecialtyId] = useState('')
+  const [doctorId, setDoctorId] = useState('')
 
   const [steps, setSteps] = useState([
     { key: 0, label: 'Пациент', isDone: true, component: firstComponent },
     { key: 1, label: 'Медорганизация', isDone: false, component: secondComponent },
     { key: 2, label: 'Специальность', isDone: false, component: thirdComponent },
-    { key: 'fourthStep', label: 'Врач', isDone: false, component: thirdComponent },
+    { key: 3, label: 'Врач', isDone: false, component: thirdComponent },
     { key: 'finalStep', label: 'Талон', isDone: false, component: finalComponent },
   ])
 
@@ -88,6 +83,7 @@ export function Page1() {
           {activeStep.key === 0 && <Patients next={handleNext} polisN={polisN} setPolisN={setPolisN} />}
           {activeStep.key === 1 && <OmsLPUs next={handleNext} polisN={polisN} lpuId={lpuId} setLpuId={setLpuId} />}
           {activeStep.key === 2 && <Specialties next={handleNext} lpuId={lpuId} specialtyId={specialtyId} setSpecialtyId={setSpecialtyId} />}
+          {activeStep.key === 3 && <Doctors next={handleNext} lpuId={lpuId} specialtyId={specialtyId} doctorId={doctorId} setDoctorId={setDoctorId} />}
           {/* {
             activeStep.component({next: handleNext})
           } */}

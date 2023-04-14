@@ -34,3 +34,4 @@ export const GORZDRAV_API: GorzdravApi = {
 export const getLPUsEndpoint = (districtId: string) => GORZDRAV_API.lpus.replace('{districtId}', districtId)
 export const getOmsLPUsEndpoint = (polisN: string) => GORZDRAV_API.omsLpus+polisN
 export const getSpecialtiesEndpoint = (lpuId: string) => GORZDRAV_API.specialties.replace('{lpuId}', lpuId)
+export const getDoctorsEndpoint = (lpuId: string, specialtyId: string) => GORZDRAV_API.doctors.replace('{lpuId}', lpuId).replace('{specialtyId}', specialtyId) 
