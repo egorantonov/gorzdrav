@@ -1,0 +1,15 @@
+.specialties {
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.specialty {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #ccc;
+  margin: 5px;
+  text-align: left;
+}

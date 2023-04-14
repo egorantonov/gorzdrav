@@ -1,9 +1,4 @@
 import { useState } from 'react'
-import { Handles } from '../../pages/page1'
-
-export interface SavedPatients {
-  patients: Patient[]
-}
 
 export interface Patient {
   firstName: string,
@@ -12,8 +7,14 @@ export interface Patient {
   polisN: string
 }
 
+export interface PatientsProps {
+  next: any,
+  polisN: string,
+  setPolisN: any
+}
 
-export function Patients(handles: Handles) {
+
+export function Patients(props: PatientsProps) {
   const requiredPlaceholder = 'Обязательно'
   const text = 'text' 
 
@@ -31,7 +32,7 @@ export function Patients(handles: Handles) {
 
   const polisNId = 'polis-n'
   const polisNLabel = 'Номер полиса'
-  const [polisN, setPolisN] = useState('')
+  const [polisN, setPolisN] = useState(props.polisN)
 
   const selectedPatient = 'selectedPatient'
 
@@ -40,8 +41,7 @@ export function Patients(handles: Handles) {
 
   const onPatientSubmit = (e: any) => {
     e.preventDefault()
-    const patientId = polisN
-    localStorage.setItem(selectedPatient, patientId)
+    localStorage.setItem(selectedPatient, polisN)
 
     const patientExists = patients.find(p => p.polisN === polisN)
     if (patientExists) {
@@ -56,12 +56,14 @@ export function Patients(handles: Handles) {
       localStorage.setItem('patients', JSON.stringify([...patients, newPatient]))
     }
 
-    handles.next()
+    props.setPolisN(polisN)
+    props.next()
   }
 
   const setActivePatient = (p: Patient) => {
     localStorage.setItem(selectedPatient, p.polisN)
-    handles.next()
+    props.setPolisN(p.polisN)
+    props.next()
   }
 
   return (
@@ -81,7 +83,7 @@ export function Patients(handles: Handles) {
 
         <label style={{width: '40%'}} htmlFor={polisNId}>{polisNLabel}</label>
         <input style={{width: '40%'}} type="number" id={polisNId} placeholder={requiredPlaceholder} 
-          value={polisN} required={true} onChange={(e) => setPolisN(e.target.value)} />
+          value={polisN} required={true} onChange={(e) => props.setPolisN(e.target.value)} />
 
         <input style={{width: '40%'}} type="submit" onClick={onPatientSubmit} />
       </form>

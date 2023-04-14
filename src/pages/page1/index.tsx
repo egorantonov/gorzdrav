@@ -2,20 +2,23 @@ import React, { useState } from 'react'
 import './style.scss'
 import { Patients } from '../../components/PatientForm'
 import { OmsLPUs } from '../../components/OmsLPUs'
+import { Specialties } from '../../components/Specialties'
  
 
 export interface Handles {
-  next: any
+  next: any,
+  polisN: string,
+  lpuId: string,
 }
 
-const firstComponent = (handles: Handles) => {
+const firstComponent = () => {
   return <div>
-    <Patients next={handles.next}  />
+
   </div>
 }
-const secondComponent = (handles: Handles)  => {
+const secondComponent = ()  => {
   return <div>
-    <OmsLPUs next={handles.next} />
+
   </div>
 }
 const thirdComponent = () => {
@@ -26,11 +29,14 @@ const finalComponent = () => {
 }
 
 export function Page1() {
+  const [polisN, setPolisN] = useState('')
+  const [lpuId, setLpuId] = useState('')
+  const [specialtyId, setSpecialtyId] = useState('')
 
   const [steps, setSteps] = useState([
-    { key: 'firstStep', label: 'Пациент', isDone: true, component: firstComponent },
-    { key: 'secondStep', label: 'Медорганизация', isDone: false, component: secondComponent },
-    { key: 'thirdStep', label: 'Специальность', isDone: false, component: thirdComponent },
+    { key: 0, label: 'Пациент', isDone: true, component: firstComponent },
+    { key: 1, label: 'Медорганизация', isDone: false, component: secondComponent },
+    { key: 2, label: 'Специальность', isDone: false, component: thirdComponent },
     { key: 'fourthStep', label: 'Врач', isDone: false, component: thirdComponent },
     { key: 'finalStep', label: 'Талон', isDone: false, component: finalComponent },
   ])
@@ -79,10 +85,14 @@ export function Page1() {
           {/* <input type="button" value={steps.at(-1)?.key !== activeStep.key ? 'Next' : 'Submit'} onClick={handleNext} /> */}
         </div>
         <div className="step-component">
-          {
+          {activeStep.key === 0 && <Patients next={handleNext} polisN={polisN} setPolisN={setPolisN} />}
+          {activeStep.key === 1 && <OmsLPUs next={handleNext} polisN={polisN} lpuId={lpuId} setLpuId={setLpuId} />}
+          {activeStep.key === 2 && <Specialties next={handleNext} lpuId={lpuId} specialtyId={specialtyId} setSpecialtyId={setSpecialtyId} />}
+          {/* {
             activeStep.component({next: handleNext})
-          }
+          } */}
         </div>
+        <div>Полис: {polisN}</div>
       </div>
     </div>
   )

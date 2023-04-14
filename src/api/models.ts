@@ -38,6 +38,16 @@ export interface LPU {
   latitude: string,
 }
 
+export interface Specialty {
+  id: string,
+  ferId: string, // ?
+  name: string,
+  countFreeParticipant: number,  // число доступных талонов
+  countFreeTicket: number, // ?
+  lastDate?: string, // Date
+  nearestDate?: string // Date 
+}
+
 export interface ApiCache<T> {
   value: T,
   timestamp: number

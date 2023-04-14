@@ -1,41 +1,38 @@
-import { useCallback, useEffect, useState } from 'react'
-import { fetchLPUs, getData } from '../../api/methods'
-import { LPU, LPUsResponse } from '../../api/models'
+import { useEffect, useState } from 'react'
+import { getData } from '../../api/methods'
+import { LPU } from '../../api/models'
 
 import style from './lpu.module.scss'
 import { Patient } from '../PatientForm'
 import { getOmsLPUsEndpoint } from '../../api/endpoints'
-import { Handles } from '../../pages/page1'
 
 interface OmsLPUsProps {
-  polisN: string;
+  next: any,
+  polisN: string,
+  lpuId: string,
+  setLpuId: any
 }
 
-export function OmsLPUs(handles: Handles) {
+export function OmsLPUs(props: OmsLPUsProps) {
 
-  const [lpu, setLpu] = useState({} as LPU)
   const [LPUs, setLPUs] = useState([] as LPU[])
 
-  const selectedPatient = 'selectedPatient'
-  const polisN = localStorage.getItem(selectedPatient) ?? ''
   const patients: Patient[] = JSON.parse(localStorage.getItem('patients') ?? '[]')
-
-  const patient = patients.find(p => p.polisN === polisN)
+  const patient = patients.find(p => p.polisN === props.polisN)
 
   const onLPUClick = (selectedLPU: LPU) => {
-    setLpu(selectedLPU)
-
-    handles.next()
+    props.setLpuId(selectedLPU.id)
+    props.next()
   }
 
   useEffect(() => {
     const getLPUs = async () => {
-      const data = await getData<LPU[]>(`lpus_${polisN}`, getOmsLPUsEndpoint(polisN))
+      const data = await getData<LPU[]>(getOmsLPUsEndpoint(props.polisN), `lpus_${props.polisN}`)
       setLPUs(data)
     }
 
     getLPUs()
-  }, [polisN])
+  }, [props.polisN])
 
   return (
     <div id="lpus" >
@@ -68,9 +65,6 @@ export function OmsLPUs(handles: Handles) {
             </div>
           )
         })}
-      </div>
-      <div>
-        <span>Выбранное ЛПУ: {lpu.lpuFullName}</span>
       </div>
     </div>
   )

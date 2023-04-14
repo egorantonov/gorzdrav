@@ -1,19 +1,52 @@
 import { useEffect, useState } from 'react'
-import { Handles } from '../../pages/page1'
 import { getData } from '../../api/methods'
+import { getSpecialtiesEndpoint } from '../../api/endpoints'
+import { Specialty } from '../../api/models'
 
-export function Specialties(handles: Handles) {
+import style from './specialty.module.scss'
 
-  const selectedLpu = localStorage.getItem('lpuId')
-  const [lpuId, setLpuId] = useState(selectedLpu)
+export interface SpecialtiesProps {
+  next: any,
+  lpuId: string,
+  specialtyId: string,
+  setSpecialtyId: any
+}
+
+export function Specialties(props: SpecialtiesProps) {
+
+  const [specialties, setSpecialties] = useState([] as Specialty[])
 
   useEffect(() => {
-    const getSpecialties =async () => {
-      const data = await getData<Specialty[]>(`lpu_${lpuId}_specialties`, getSpecialtiesEndpoint(lpuId))
+    const getSpecialties = async () => {
+      const data = await getData<Specialty[]>(getSpecialtiesEndpoint(props.lpuId))
+      setSpecialties(data)
     }
-  })
+
+    getSpecialties()
+  }, [props.lpuId])
+
+  const onSpecialtyClick = (selectedSpecialty: Specialty) => {
+    props.setSpecialtyId(selectedSpecialty.id)
+    props.next()
+  }
 
   return(
-
+    <div id="specialties">
+      <div className={style.specialties}>
+        <span>Список доступных специальностей ({specialties.length}):</span>
+        {specialties.length > 0 && specialties.map((s) => {
+          return (
+            <div key={s.id} data-id={s.id} className={style.specialty} onClick={() => onSpecialtyClick(s)}>
+              <div>
+                <span><b>{s.name}</b></span>              
+              </div>
+              {s.countFreeParticipant > 0 && <div>
+                <span>{s.countFreeParticipant}</span>
+              </div>}
+            </div>
+          )
+        })}
+      </div>
+    </div>
   )
 }

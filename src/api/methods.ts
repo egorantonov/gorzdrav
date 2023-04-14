@@ -45,19 +45,22 @@ export const fetchLPUs = async (districtId: string): Promise<LPUsResponse> => {
   return LPUsResponse
 }
 
-export async function getData<T>(cacheId: string, url: string): Promise<T> {
+export async function getData<T>(url: string, cacheId = ''): Promise<T> {
 
-  const cacheString = localStorage.getItem(cacheId)
-  if (cacheString) {
-    const cache: ApiCache<T> = JSON.parse(cacheString)
-
-    if ((Date.now() - cache.timestamp)/CACHE_EXPIRATION > 1) {
-      localStorage.removeItem(cacheId)
-    }
-    else {
-      return cache.value
+  if (cacheId !== '') {
+    const cacheString = localStorage.getItem(cacheId)
+    if (cacheString) {
+      const cache: ApiCache<T> = JSON.parse(cacheString)
+  
+      if ((Date.now() - cache.timestamp)/CACHE_EXPIRATION > 1) {
+        localStorage.removeItem(cacheId)
+      }
+      else {
+        return cache.value
+      }
     }
   }
+
 
   let response = {} as T
   await getJson(url)
@@ -70,8 +73,11 @@ export async function getData<T>(cacheId: string, url: string): Promise<T> {
         }
 
         response = data.result
-        const cache: ApiCache<T> = {value: response, timestamp: Date.now()} 
-        localStorage.setItem(cacheId, JSON.stringify(cache))
+
+        if (cacheId !== '') {
+          const cache: ApiCache<T> = {value: response, timestamp: Date.now()} 
+          localStorage.setItem(cacheId, JSON.stringify(cache))
+        }
       },
       (error) => {
         console.error(`[ERROR][API][${url}]\r\n${error}`)

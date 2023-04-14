@@ -82,6 +82,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .box .btn-component {
   padding: 20px;
