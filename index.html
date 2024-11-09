@@ -1,0 +1,127 @@
+<html>
+<head>
+  <link rel="preconnect" href="https://gorzdrav.spb.ru">
+  <link rel="icon" href="https://gorzdrav.spb.ru/images/r78/favicon.ico">
+  <link rel="apple-touch-icon" href="/gorzdrav/256.png" />
+  <link rel="canonical" href="https://egorantonov.github.io/gorzdrav" data-rh="true">
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="./styles.min.css">
+  <meta name="og:url" property="og:url" content="https://egorantonov.github.io/gorzdrav" data-rh="true">
+  <meta name="og:title" property="og:title" content="Горздрав" data-rh="true">
+  <meta name="twitter:title" content="Горздрав" data-rh="true">
+  <meta charset="utf-8"/>
+  <title>ГОРЗДРАВ</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Сервис записи в поликлиники Санкт-Петербурга по полису ОМС">
+  <meta name="theme-color" content="#00AA8A">
+  <meta name="color-scheme" content="light">
+</head>
+<body onload="initialize()">
+  <div id="root">
+    <header id="header">
+      <div >
+        <img style="height: 32px;" src="https://gorzdrav.spb.ru/images/r78/favicon.ico" />  
+        <h3>Горздрав | Санкт&#8209;Петербург</h3>
+      </div>
+      <p>Сервис записи в поликлиники Санкт&#8209;Петербурга</p>
+    </header>
+    <div id="newPatient">
+      <form id="newPatient_form" onsubmit="return onPatientSubmit(event)">
+        <div>
+          <label for="patientLastName">Фамилия</label>
+          <input required placeholder="Введите фамилию" type="text" id="lastName" />
+        </div>
+        <div>
+          <label for="patientFirstName">Имя</label>
+          <input required placeholder="Введите имя" type="text" id="firstName" />
+        </div>
+        <div>
+          <label for="patientBirthDate">Дата рождения</label>
+          <input required value="1970-08-01" type="date" id="birthDate" />
+        </div>
+        <div>
+          <label for="patientFirstName">Полис ОМС</label>
+          <input required placeholder="Введите номер полиса ОМС (16 символов)" type="number" id="insuranceNumber" min="1000000000000000" max="9999999999999999" />
+        </div>
+        <div>
+          <input type="submit" value="Добавить"/>
+        </div>
+      </form>
+    </div>
+    <div id="patients">
+
+    </div>
+    <div class="popups">
+
+      <div id="lpus" class="popup hidden">
+        <div class="popup_container">
+
+          <div class="popup_header">
+            <div class="popup_back"></div>
+            <div class="popup_title">Выбор медорганизации</div>
+            <div class="popup_menu" onclick="updateCache()">↻</div>
+          </div>
+
+          <div class="popup_content" id="lpus_list">
+          </div>
+        </div>
+      </div>
+
+      <div id="specialties" class="popup hidden">
+
+        <div class="popup_container">
+
+          <div class="popup_header">
+            <div class="popup_back"></div>
+            <div class="popup_title">Выбор специальности</div>
+            <div class="popup_menu"><!--⁝--></div>
+          </div>
+
+          <div class="popup_content">
+            <div id="lpu_appointments"></div>
+            <div id="lpu_appointments_list">
+            </div>
+            <div id="specialties_list">
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div id="doctors" class="popup hidden">
+
+        <div class="popup_container">
+
+          <div class="popup_header">
+            <div class="popup_back"></div>
+            <div class="popup_title">Выбор врача</div>
+            <div class="popup_menu"></div>
+          </div>
+
+          <div class="popup_content" id="doctors_list">
+          </div>
+
+        </div>
+
+      </div>
+
+      <div id="appointments" class="popup hidden">
+        <div class="popup_container">
+          <div class="popup_header">
+            <div class="popup_back"></div>
+            <div class="popup_title">Выбор талона</div>
+            <div class="popup_menu"></div>
+          </div>
+
+          <div class="popup_content" id="appointments_list">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="./index.js"></script>
+</html>
