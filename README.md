@@ -2,7 +2,7 @@
 
 <p align="center">Кастомная реализация API Горздрав Санкт-Петербурга</p>
 
-<p  align="center"> 
-  <a style="color:#00AA8A" href="#https://egorantonov.github.io/gorzdrav">🌐&nbsp;API&nbsp;клиент</a> 
+<p align="center"> 
+  <a style="color:#00AA8A" href="https://egorantonov.github.io/gorzdrav">🌐&nbsp;API&nbsp;клиент</a> 
   &nbsp;&nbsp;&nbsp;<a style="color:#00AA8A" href="https://github.com/egorantonov/gorzdrav/wiki/SPB-Gorzdrav-API-Documentation">📃&nbsp;Документация</a>
 </p>
