@@ -1,4 +1,4 @@
-<h1 align="center" style="color:#00AA8A" ><img src="https://gorzdrav.spb.ru/images/r78/favicon.ico" width="20px"  /> ГОРЗДРАВ </h1>
+<h1 align="center" style="color:#00AA8A" ><img src="https://egorantonov.github.io/gorzdrav/64.png" width="24px"  /> ГОРЗДРАВ </h1>
 
 <p align="center">Кастомная реализация API Горздрав Санкт-Петербурга</p>
 
