@@ -249,26 +249,26 @@ async function onPatientSubmit(event) {
   event.preventDefault()
   const form = event.target
 
-  const insuranceNumber = event.target.insuranceNumber.value
-  const lastName = event.target.lastName.value.trim()
-  const firstName = event.target.firstName.value.trim()
-  const birthDate = event.target.birthDate.value
+  const insuranceNumber = form.insuranceNumber.value
+  const lastName = form.lastName.value.trim()
+  const firstName = form.firstName.value.trim()
+  const birthDate = form.birthDate.value
 
   setActivePatient(insuranceNumber, lastName, firstName, birthDate)
 
   const patients = getPatients()
-  const existing = patients.find(p => p.insuranceNumber == form.insuranceNumber.value)
+  const existing = patients.find(p => p.insuranceNumber == insuranceNumber)
   if (existing) {
-    existing.lastName = form.lastName.value,
-    existing.firstName = form.firstName.value,
-    existing.birthDate = form.birthDate.value
+    existing.lastName = lastName,
+    existing.firstName = firstName,
+    existing.birthDate = birthDate
   }
   else {
     patients.push({
-      insuranceNumber: form.insuranceNumber.value,
-      lastName: form.lastName.value,
-      firstName: form.firstName.value,
-      birthDate: form.birthDate.value
+      insuranceNumber: insuranceNumber,
+      lastName: lastName,
+      firstName: firstName,
+      birthDate: birthDate
     })
   }
   setPatients(patients)
