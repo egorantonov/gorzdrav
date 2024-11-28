@@ -16,24 +16,21 @@ const CONSTANTS = {
 }
 
 function initialize() {
-  // pwa()
   renderPatients()
   document.querySelector('#appointments .popup_back').addEventListener('click', () => {
     removeTimers()
   })
+  pwa()
 }
 
 function pwa() {
-    // // TODO: setup pwa?
-    // window.addEventListener('load', function() {
-    //     window.history.pushState({ noBackExitsApp: true }, '')
-    //   })
-
-    // window.addEventListener('popstate', function(event) {
-    //   if (event.state && event.state.noBackExitsApp) {
-    //     window.history.pushState({ noBackExitsApp: true }, '')
-    //   }
-    // })
+  window.addEventListener('popstate', (event) => {
+    const currentBackButton = Array.from(document.querySelectorAll('.popup:not(.hidden) .popup_back')).at(-1)
+    if (currentBackButton) {
+      const parentPopup = currentBackButton.closest('.popup')
+      parentPopup.classList.add('hidden')
+    }
+  })
 }
 
 function renderPatients() {
@@ -208,6 +205,7 @@ async function setActivePatient(insuranceNumber, lastName, firstName, birthDate)
     parameter2EmptyMessage: '',
   }
   getData(request)
+  history.pushState({ page: 1 }, 'LPUS', '#lpus')
 }
 
 function updateCache() {
@@ -252,8 +250,8 @@ async function onPatientSubmit(event) {
   const form = event.target
 
   const insuranceNumber = event.target.insuranceNumber.value
-  const lastName = event.target.lastName.value
-  const firstName = event.target.firstName.value
+  const lastName = event.target.lastName.value.trim()
+  const firstName = event.target.firstName.value.trim()
   const birthDate = event.target.birthDate.value
 
   setActivePatient(insuranceNumber, lastName, firstName, birthDate)
@@ -296,6 +294,7 @@ async function getSpecialties(lpuId) {
     parameter2EmptyMessage: '',
   }
   getData(request)
+  history.pushState({ page: 2 }, 'Specialties', '#specialties')
 }
 
 function renderSpecialty(specialty, lpuId) {
@@ -321,6 +320,7 @@ async function getDoctors(lpuId, specialtyId) {
     parameter2EmptyMessage: 'Ошибка: не передан идентификатор специальности',
   }
   getData(request)
+  history.pushState({ page: 3 }, 'Doctors', '#doctors')
 }
 
 function renderDoctor(doctor, lpuId) {
@@ -345,7 +345,6 @@ async function getLpuAppointments(lpuId, patientId) {
         parameter2Name: '{patientId}',
         parameter2EmptyMessage: 'Ошибка: не передан идентификатор пациента',
     }
-
     getData(request)
 }
 
@@ -417,8 +416,8 @@ async function getAppointments(lpuId, doctorId) {
         parameter2Name: '{doctorId}',
         parameter2EmptyMessage: 'Ошибка: не передан идентификатор врача',
     }
-
     getData(request, true)
+    history.pushState({ page: 5 }, 'Appointments', '#appointments')
 }
 
 function renderAppointment(appointment, lpuId, doctorId) {
@@ -599,8 +598,9 @@ const backButtons = Array.from(document.querySelectorAll('.popup_back'))
 for (let i = 0; i < backButtons.length; i++) {
   const back = backButtons[i];
   back.addEventListener('click', (e) => {
-    const parentPopup = e.target.closest('.popup')
-    parentPopup.classList.add('hidden')
+    // const parentPopup = e.target.closest('.popup')
+    // parentPopup.classList.add('hidden')
+    history.back()
   })
 }
 
