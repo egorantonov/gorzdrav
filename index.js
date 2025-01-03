@@ -329,6 +329,8 @@ function renderDoctor(doctor, lpuId) {
   return `
 <div class="doctor">
   <div class="doctor_name">${doctor.name}</div>
+  <div class="doctor_comment">${doctor.comment ? doctor.comment : ''}</div>
+  <div class="doctor_aria">${doctor.ariaNumber ? doctor.ariaNumber : ''}</div>
   <div class="doctor_tickets">${doctor.freeParticipantCount ? `Талонов: ${doctor.freeParticipantCount}` : ''}</div>
   <button class="doctor_select_button" onclick="getAppointments('${lpuId}', '${doctor.id}')">Выбрать</button>
 </div>`

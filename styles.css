@@ -323,6 +323,8 @@ form {
 .lpu_address, .lpu_contacts,
 .specialty_tickets,
 .doctor_tickets,
+.doctor_comment,
+.doctor_aria,
 .appointment_room {
   font-size: small;
   display: flex;
