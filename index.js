@@ -17,9 +17,7 @@ const CONSTANTS = {
 
 function initialize() {
   renderPatients()
-  document.querySelector('#appointments .popup_back').addEventListener('click', () => {
-    removeTimers()
-  })
+  removeTimers()
   pwa()
 }
 
@@ -29,6 +27,10 @@ function pwa() {
     if (currentBackButton) {
       const parentPopup = currentBackButton.closest('.popup')
       parentPopup.classList.add('hidden')
+
+      if (currentBackButton.id == 'appointments_back') {
+        removeTimers()
+      }
     }
   })
 }
