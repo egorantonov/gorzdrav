@@ -1,3 +1,49 @@
+:root {
+  --radius5: 5px;
+  --radius10: 10px;
+  --radius15: 15px;
+  --radius20: 20px;
+  --radius100: 100px;
+  --blur5px: blur(5px);
+  --blur10px: blur(10px);
+  --text: #222;
+  --button-text: #fff;
+  --background: #fff;
+  --link: #08f;
+  --accent: #00AA8A;
+  --accent-hover: #009b7e;
+  --accent-neutral: #54545421;
+  --accent-transp: #00AA8A22;
+  --select: #6D00F5;
+  --select-hover: #9627F4;
+  --cancel: #c00;
+  --cancel-hover: #f33;
+  --remove: #f99e;
+  --gray: #777;
+  --gray-transp: #7777;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #ddd;
+    --background: #222;
+    --remove: #f99b;
+    --gray: #999;
+    --link: #52aeff;
+    --accent: #009b7e;
+    --accent-hover: #00AA8A;
+    --accent-neutral: #ffffff21;
+  }
+
+  input::placeholder {
+    color: var(--gray);
+  }
+
+  input {
+    color: var(--button-text);
+  }
+}
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto-Condensed, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serifArial, Helvetica, sans-serif;
   overflow-y: scroll;
@@ -7,10 +53,12 @@ body {
   user-select: none;
   margin: 0;
   padding: 8px;
-  border-top:#00AA8A 1.5px solid;
+  border-top: var(--accent) 1.5px solid;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
-  box-shadow: #00AA8A 0px -10px 0px 5px;
+  box-shadow: var(--accent) 0px -10px 0px 5px;
+  color: var(--text);
+  background-color: var(--background);
 }
 
 /* body::selection, 
@@ -28,7 +76,7 @@ p {
 }
 
 a {
-  color: #08f;
+  color: var(--link);
   text-decoration: none;
 }
 
@@ -38,11 +86,11 @@ a:hover {
 
 button, input[type="submit"] {
   appearance: button;
-  border-radius: 6px;
+  border-radius: var(--radius100);
   border: 0px none transparent;
   height: 40px !important;
-  color: #fff;
-  background-color: #00AA8A;
+  color: var(--button-text);
+  background-color: var(--accent);
   padding-left: 25px;
   padding-right: 25px;
   text-transform: uppercase;
@@ -51,7 +99,7 @@ button, input[type="submit"] {
 }
 
 button:hover, input[type="submit"]:hover {
-  background-color: #009b7e;
+  background-color: var(--accent-hover);
 }
 
 #root {
@@ -79,13 +127,13 @@ button:hover, input[type="submit"]:hover {
 
 #header h3 {
   text-transform: uppercase;
-  color: #009b7e;
+  color: var(--accent-hover);
   font-weight: 400;
   margin: 0 16px;
 }
 
 #header p {
-  color: #777;
+  color: var(--gray);
   font-size: smaller;
   text-align: center;
 }
@@ -114,7 +162,7 @@ button:hover, input[type="submit"]:hover {
 }
 
 .popup#lpus {
-  background: #fff;
+  background: var(--background);
 }
 
 @media (min-width: 501px) {
@@ -123,15 +171,15 @@ button:hover, input[type="submit"]:hover {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 
-    border-top:#00AA8A 1.5px solid;
+    border-top: var(--accent) 1.5px solid;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    box-shadow: #00AA8A 0px -10px 0px 5px;
+    box-shadow: var(--accent) 0px -10px 0px 5px;
   }
 }
 
 .popup_container {
-  background: #fff;
+  background: var(--background);
   max-width: 500px;
   margin: 0 auto;
 }
@@ -146,15 +194,15 @@ button:hover, input[type="submit"]:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--background);
 }
 
 @media (max-width: 500px) {
   .popup_header {
-    border-top:#00AA8A 1.5px solid;
+    border-top: var(--accent) 1.5px solid;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    box-shadow: #00AA8A 0px -10px 0px 5px;
+    box-shadow: var(--accent) 0px -10px 0px 5px;
   }
 }
 
@@ -171,7 +219,7 @@ button:hover, input[type="submit"]:hover {
 }
 
 .popup_back:hover, .popup_menu:hover {
-  color: #009b7e;
+  color: var(--accent-hover);
 }
 
 .popup_title {
@@ -207,7 +255,7 @@ form {
 }
 
 .error {
-  color: #c00;
+  color: var(--cancel);
 }
 
 #newPatient_form {
@@ -235,9 +283,10 @@ form {
 }
 
 #newPatient_form>div>input:not([type=submit]) {
-  border: 1px solid #777;
-  border-radius: 5px;
+  border: 1px solid #7770;
+  border-radius: var(--radius15);
   padding-left: 7px;
+  background-color: var(--accent-transp);
 }
 
 #newPatient_form>div>input[type=submit] {
@@ -261,8 +310,8 @@ form {
 
 .patient {
   display: flex;
-  border: 1px solid #7777;
-  border-radius: 5px;
+  border: 1px solid transparent;
+  border-radius: var(--radius15);
   overflow: hidden;
   flex-direction: row;
   justify-content: space-between;
@@ -271,19 +320,19 @@ form {
 }
 
 .patient:hover {
-  border-color: #777;
+  border-color: var(--accent-neutral);
 }
 
 .patient_info {
   padding: 0;
   margin: 0;
-  background-color: #eee;
+  background-color: var(--accent-transp);
   width: 85%;
   padding: 10px;
 }
 
 .patient_info:hover {
-  background-color: #fafafa;
+  background-color: var(--accent-neutral);
 }
 
 .patient_name {
@@ -291,21 +340,22 @@ form {
 }
 
 .patient_birthday, .patient_insurance {
-  color: #777;
+  color: var(--gray);
   font-size: 14px;
 }
 
 .patient_remove {
   width: 15%;
-  background-color: #f99;
+  background-color: var(--remove);
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #000;
 }
 
 .patient_remove:hover {
-  background-color: #f33;
+  background-color: var(--cancel-hover);
 }
 
 .lpu,
@@ -314,9 +364,9 @@ form {
 .appointment,
 .lpu_appointment {
   padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #7777;
-  background-color: #f6f6f6;
+  border-radius: var(--radius15);
+  border: 1px solid transparent;
+  background-color: var(--accent-transp, #f6f6f6);
   margin-bottom: 10px;
 }
 
@@ -350,7 +400,7 @@ form {
 .lpu_name>div.removeLpu {
   cursor: pointer;
   font-size: 18px;
-  color: #777;
+  color: var(--gray);
 }
 
 .lpu_select_button,
@@ -362,19 +412,19 @@ form {
 }
 
 .appointment_select_button {
-  background-color: #6D00F5;
+  background-color: var(--select);
 }
 
 .appointment_select_button:hover  {
-  background-color: #9627F4;
+  background-color: var(--select-hover);
 }
 
 .lpu_appointment_cancel_button {
-  background-color: #c00;
+  background-color: var(--cancel);
 }
 
 .lpu_appointment_cancel_button:hover {
-  background-color: #f33;
+  background-color: var(--cancel-hover);
 }
 
 .lpu_appointment {
@@ -388,8 +438,8 @@ form {
   justify-content: space-between;
   font-size: 24px;
   font-weight: 700;
-  background-color: #00AA8A;
-  color: #fff;
+  background-color: var(--accent);
+  color: var(--button-text);
   padding: 10px;
 }
 
@@ -411,7 +461,7 @@ form {
 
 .lpu_appointment_doctor, .lpu_appointment_patient_birthday {
   font-size: 12px;
-  color: #777;
+  color: var(--gray);
 }
 
 .lpu_appointment_patient {
@@ -425,7 +475,7 @@ form {
 
 .lpu_appointment_address, .lpu_appointment_phone {
   font-size: 12px;
-  color: #777;
+  color: var(--gray);
 }
 
 .lpu_appointment_address::before {
@@ -437,6 +487,6 @@ form {
 }
 
 button:disabled, button:hover:disabled {
-  background-color: #777;
+  background-color: var(--gray);
   cursor: not-allowed;
 }

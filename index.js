@@ -111,6 +111,8 @@ async function getData({
       .then(json => {
         if (json.success && json.result && Array.isArray(json.result)) {
           const result = json.result
+            .sort((a, b) => b.freeParticipantCount - a.freeParticipantCount)
+            .sort((a, b) => b.countFreeParticipant - a.countFreeParticipant)
 
           // caching
           if (view == 'lpus' && patient && (!patient.favLpus || Array.isArray(patient.favLpus) && !patient.favLpus.length)) {
@@ -126,7 +128,7 @@ async function getData({
           }
         }
         else if (!json.success) {
-          UpdateContent(container, withMessage(`Ошибка: ${json.message ? json.message : 'Сервис вернул ошибку без сообщения'}`))
+          UpdateContent(container, withMessage(`${json.errorCode == 39 ? '⚠️ ' : 'Ошибка: '}${json.message ? json.message : 'Сервис вернул ошибку без сообщения'}`))
           countPrevious = countCurrent
         }
         else {
